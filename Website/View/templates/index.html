@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script language="javascript">
+        	$(function(){
+				$('.TopHoverMenu').hover(function(){
+					var ImgN=$(this).index();
+					var ImgRoot="../images/style/top_button/";
+					switch(ImgN+1){
+						case 1:
+							$(this).attr("src",ImgRoot+"1-2.jpg");
+						break;
+						case 2:
+							$(this).attr("src",ImgRoot+"2-2.jpg");
+						break;
+						case 3:
+							$(this).attr("src",ImgRoot+"3-2.jpg");
+						break;
+						case 4:
+							$(this).attr("src",ImgRoot+"4-2.jpg");
+						break;
+						case 5:
+							$(this).attr("src",ImgRoot+"5-2.jpg");
+						break;
+						case 6:
+							$(this).attr("src",ImgRoot+"6-2.jpg");
+						break;
+						case 7:
+							$(this).attr("src",ImgRoot+"7-2.jpg");
+						break;
+					}
+				},function(){
+					var ImgN=$(this).index();
+					var ImgRoot="../images/style/top_button/";
+					switch(ImgN+1){
+						case 1:
+							$(this).attr("src",ImgRoot+"1-1.jpg");
+						break;
+						case 2:
+							$(this).attr("src",ImgRoot+"2-1.jpg");
+						break;
+						case 3:
+							$(this).attr("src",ImgRoot+"3-1.jpg");
+						break;
+						case 4:
+							$(this).attr("src",ImgRoot+"4-1.jpg");
+						break;
+						case 5:
+							$(this).attr("src",ImgRoot+"5-1.jpg");
+						break;
+						case 6:
+							$(this).attr("src",ImgRoot+"6-1.jpg");
+						break;
+						case 7:
+							$(this).attr("src",ImgRoot+"7-1.jpg");
+						break;
+					}
+				});
+			});
+			
+			$(function(){
+				$('.MoreHover').hover(function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/icon/more_2.gif");
+				},function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/icon/more_1.gif");
+				});
+			});
+			
+			$(function(){
+				$('.GoHover1').hover(function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/index/block-go1-2.gif");
+				},function(){
+					var ImgN=$(this)
+					$(this).attr("src","../images/index/block-go1-1.gif");
+				});
+			});
+			
+			$(function(){
+				$('.GoHover2').hover(function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/index/block-go2-2.gif");
+				},function(){
+					var ImgN=$(this)
+					$(this).attr("src","../images/index/block-go2-1.gif");
+				});
+			});
+			
+			$(function(){
+				$('.GoHover3').hover(function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/index/block-go3-2.gif");
+				},function(){
+					var ImgN=$(this)
+					$(this).attr("src","../images/index/block-go3-1.gif");
+				});
+			});
+			
+			$(function(){
+				$('.texthover').hover(function(){
+					var ImgN=$(this);
+					$(this).css('color', 'gray');
+				},function(){
+					var ImgN=$(this);
+					$(this).css('color', '#333333');
+				});
+			});
+        </script>
+    	<link href="../css/Sanchuang.css" rel="stylesheet">
+        <link href="../css/index.css" rel="stylesheet">
+		<title>中原大學  教學卓越三創暨創新創業紮根資訊網</title>    
+    </head>
+    <body>
+    	<div id="wrap">
+        	<div id="top" align="left">
+            	<div id="top_left">
+                	<img src="../images/style/logo-2.jpg"/>
+                </div>
+                <div id="top_right1">
+                	<img src="../images/style/name.jpg"/>
+                </div>
+                <div id="tab1">
+                </div>
+                <div id="top_right2">
+                	<div id="top_text">
+                    	<span id="Arial-brown" >
+                            <br>
+                            <a href="http://www.philia.com.tw/chung-yuan/index.html" class='texthover'>回首頁</a>
+                            &nbsp;|&nbsp;&nbsp; 
+                            <a href="http://www.philia.com.tw/chung-yuan/index.html" class='texthover'>English</a>
+                        </span>
+                    </div>
+                    <div id="top_input">
+                    	<input type="text" name="name" align="right">
+                    	<img id="search"  src="../images/icon/search.gif"/>
+                    </div>
+                </div>
+                <div id="top_right3" align="left">
+                	<img class="pic_title TopHoverMenu" src="../images/style/top_button/1-1.jpg"/>
+                    <img class="pic_title TopHoverMenu" src="../images/style/top_button/2-1.jpg"/>
+            		<img class="pic_title TopHoverMenu" src="../images/style/top_button/3-1.jpg"/>
+            		<img class="pic_title TopHoverMenu" src="../images/style/top_button/4-1.jpg"/>
+            		<img class="pic_title TopHoverMenu" src="../images/style/top_button/5-1.jpg"/>
+            		<img class="pic_title TopHoverMenu" src="../images/style/top_button/6-1.jpg"/>
+            		<img class="pic_title TopHoverMenu" src="../images/style/top_button/7-1.jpg"/>
+                    
+                </div>
+            </div>
+            <div id="left" align="left">
+            	<div id="left1">
+                    <img src="../images/index/news_top-1.jpg" id="new_title">
+                    <img src="../images/icon/more_1.gif" id="new_more" class="MoreHover">
+                    <div id="new_text" align="left">
+                        <div class="text" align="left">
+                            <font class="blue-1">2012-09-28<br></font>
+                            <font class="grey-1"><a href='#' class='texthover'>最新消息標題欄位每欄最多可放置28個字元不足時以「...」顯示</a><br></font>
+                            <img class="newdot" src="../images/icon/dot_line.gif"/>
+                        </div>
+                        <div class="text" align="left">
+                        	<div align="left" class="h1"></div>
+                            <font class="blue-1">2012-09-28<br></font>
+                            <font class="grey-1"><a href='#' class='texthover'>文字欄位請設定高度30px，固定五筆最新消息與公告欄位</a><br></font>
+                            <img class="newdot" src="../images/icon/dot_line.gif"/>
+                        </div>
+                        <div class="text" align="left">
+                        	<div align="left" class="h1"></div>
+                            <div align="left" class="h1"></div>
+                            <font class="blue-1">2012-09-28<br></font>
+                            <div align="left" id="datetext">
+                                <font class="grey-1"><a href='#' class='texthover'>日期文字請設定blue-1</a><br></font>
+                                <img class="newdot" src="../images/icon/dot_line.gif"/>
+                            </div>
+                        </div>
+                        <div class="text" align="left">
+                        	<div align="left" class="h1"></div>
+                            <font class="blue-1">2012-09-28<br></font>
+                            <font class="grey-1"><a href='#' class='texthover'>文字欄位可放二列文字，列寬請設定15個字元</a><br></font>
+                            <img class="newdot" src="../images/icon/dot_line.gif"/>
+                        </div>
+                        <div class="text" align="left">
+                        	<div align="left" class="h1"></div>
+                            <div align="left" class="h1"></div>
+                            <font class="blue-1">2012-09-28<br></font>
+                            <font class="grey-1"><a href='#' class='texthover'>最新消息標題欄位每欄最多可放置28個字元不足時以「...」顯示</a><br></font>
+                        </div>                 
+					</div>
+                </div>
+               
+                <div id="left2" >
+                	<img src="../images/index/award-top-1.jpg" align="left">
+                    <img src="../images/icon/more_1.gif" id="award_more" class="MoreHover">
+                    <div id="award_context" align="left">
+                    	<div id="award_text" align="left">
+                            <div align="left">
+                            	<font class="blue-1">2012-09-28<br></font>
+                                <font class="grey-1"><a href='#' class='texthover'>文字欄位，列高65px、列寬190px，本欄位最多可放42字元不足時以「...」顯示，標題文字設定12-grey-1，日期文字設定12-blue-1</a><br>
+                                </font>
+                            </div>
+                            <div id="h3"></div>
+                            <div align="left">
+                            	<table width="190" border="0" align="center" class="tab_border">
+                                    <tr>
+                                        <td height="130" align="center"><font class="blue">得獎照片放置欄位<br>照片Size 185X139px</font>
+                                        </td>
+                                    </tr>
+                            	</table>
+                            </div>
+                            
+                            <div align="left" id="zoom">
+                            	<a href="#"><img src="../images/icon/zoom.gif"/></a>
+                            </div>	
+                        </div>
+                    </div>
+                    <div align="left">
+                    	<img src="../images/index/award-down.jpg"/>
+                    </div>
+                </div>
+				<div id=left3 aling="left">
+					<div id="resources" align="left">
+                    	<img id="left3_title" src="../images/index/block-top.gif"/>
+                        <div align="left" id="resources1">
+                        	 <img id="resources_pics" src="../images/index/block-red.gif"/>
+                        </div>
+                        <div align="left" id="resources2">
+                        	 <img id="resources_title" src="../images/index/block-title-1.gif"/><br>
+                             <div class="bul" align="left">
+                             	<img src="../images/icon/arrow-brown.gif"/>
+                                <img src="../images/icon/arrow-brown.gif"/>
+                                <img src="../images/icon/arrow-brown.gif"/>
+                                <img src="../images/icon/arrow-brown.gif"/>
+                             </div>
+                             <div class="left_text">
+                             	<font class="grey-1"><a href='#' class='texthover'>創業資源</a></font><br>
+                                <font class="grey-1"><a href='#' class='texthover'>教學資源</a></font><br>
+                                <font class="grey-1"><a href='#' class='texthover'>政府輔助資源</a></font><br>
+                                <font class="grey-1"><a href='#' class='texthover'>好書推薦</a></font><br>
+                             </div>
+                        </div>
+                        <div align="left" >
+                        	<img id="resources_pics_1" src="../images/index/block-icon-1.gif"/>
+                            <img id="resources_pics_2" src="../images/index/block-go1-1.gif"/ class="GoHover1">
+                        </div>
+                        <div align="left" id="line_button">
+                        	<img src="../images/index/block-down.gif"/>
+                        </div>
+                    </div>
+                    <div id="share" align="left">
+                    	<img src="../images/index/block-top.gif"/>
+                        <div id="share1" align="left">
+                        	<img id="share_pics" src="../images/index/block-orange.gif"/>
+                        </div>
+                        <div id="share2" align="left">
+                            <img id="share_title" src="../images/index/block-title-2.gif"/><br>
+                            <div class="bul" align="left">
+                                <img src="../images/icon/arrow-brown.gif"/>
+                                <img src="../images/icon/arrow-brown.gif"/>
+                            </div>
+                            <div class="left_text" align="left">
+                                <font class="grey-1"><a href='#' class='texthover'>成功案例分享</a></font><br>
+                                <font class="grey-1"><a href='#' class='texthover'>心得分享</a></font><br>
+                            </div>
+                        </div>
+                        <div align="left">
+                        	<img id="share_pics_1" src="../images/index/block-icon-2.gif"/>
+                            <img id="share_pics_2" src="../images/index/block-go2-1.gif"/ class="GoHover2">
+                        </div>
+                        <img src="../images/index/block-down.gif"/>
+                    </div>
+                    <div id="cooperation" align="left">
+                    	<img src="../images/index/block-top.gif"/>
+                        <div align="left" id="cooperation1">
+                        	<img id="cooperation_pics" src="../images/index/block-green.gif"/>
+                        </div>
+                        <div align="left" id="cooperation2">
+                        	<img id="cooperation_title" src="../images/index/block-title-3.gif"/><br>
+                            <div class="bul" align="left">
+                                <img src="../images/icon/arrow-brown.gif"/>
+                                <img src="../images/icon/arrow-brown.gif"/>
+                                <img src="../images/icon/arrow-brown.gif"/>
+                            </div>
+                            <div class="left_text" align="left">
+                                <font class="grey-1"><a href='#' class='texthover'>產學媒合平台</a></font><br>
+                                <font class="grey-1"><a href='#' class='texthover'>產學合作成果</a></font><br>
+                                <font class="grey-1"><a href='#' class='texthover'>就業實習機會</a></font>
+                            </div>
+                        </div>
+                        <div align="left">
+                        	<img id="cooperation_pics_1" src="../images/index/block-icon-3.gif"/>
+                            <img id="cooperation_pics_2" src="../images/index/block-go3-1.gif"/ class="GoHover3">
+                        </div>
+                        <img src="../images/index/block-down.gif"/>
+                    </div>
+				</div>
+			</div>
+                
+            <div id="right">
+            	<div id="right_top" align="left">
+                    <img src="../images/index/five/1.jpg"/ id="big_pic">
+                </div>
+                <div id="h8"><br></div>
+                <div id="right_left" align="left">
+                	<div id="right_left1" align="left" >
+                        <div class="h11"></div>
+                        <div class="h10"></div>
+                        <div align="left" id="resource_left_more"><img src="../images/icon/more_1.gif"/ class="MoreHover"></div>
+						<div class="center_context" align="left">
+                        	<div align="left" class="grey-1">
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+                                <img class="dot" src="../images/icon/dot_line-1.gif"/>	
+								<div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+                                <img class="dot" src="../images/icon/dot_line-1.gif"/>	
+								
+								<div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+                                <img class="dot" src="../images/icon/dot_line-1.gif"/>	
+								
+								<div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+                                <img class="dot" src="../images/icon/dot_line-1.gif"/>	
+								
+								<div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+							</div>
+                        </div>
+                    </div>
+                    <div id="right_left2" align="left">
+                        <div class="h11"></div>
+                        <div class="h10"></div>
+                        <div align="left" id="resource_left_more">
+                        	<img src="../images/icon/more_1.gif" class="MoreHover"/>
+                        </div>
+                        <div class="center_context" align="left">
+                        	<div align="left" class="grey-1">
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+                                <img class="dot" src="../images/icon/dot_line-1.gif"/>	
+								
+								
+								<div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+                                <img class="dot" src="../images/icon/dot_line-1.gif"/>	
+								
+								<div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+                                <img class="dot" src="../images/icon/dot_line-1.gif"/>	
+								
+								<div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+                                <img class="dot" src="../images/icon/dot_line-1.gif"/>	
+								
+								<div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                    <a href='#' class='texthover'><font>課程講座標題欄位每欄最多可放置35個字元不足時以「...」顯示</font></a>
+                                </div>
+                                <div align="left" >
+                                	<img class="dot" src="../images/icon/dot_line-1.gif"/>
+                                </div>
+								
+                                <div align="left" class="text_left">
+                                    <img src="../images/icon/bul.gif"/>
+                                </div>
+                                <div align="left" class="text_right">
+                                   	<a href='#' class='texthover'><font>固定顯示10筆課程欄位</font></a>
+                                </div>
+							</div>
+                        </div>           	
+                    </div>
+                </div>
+                <div id="h14"></div>
+                <div id="right_right">
+                    <div id="right_right1" align="left" >
+                    	  <img src="../images/index/activity_title.jpg"/ align="left">
+                          <div id="h16" align="left"></div>
+                          <div id="h15" align="left"></div>
+                          <table width="205" height="255" border="0" align="left" class="tab_border" >
+                          	<tr>
+                            	<td><div align="center"><font class="blue">活動海報或圖片放置欄位<br>圖片Size 205X260px</font></div></td>
+                            </tr>
+                          </table>                  	
+                    </div>
+                    <div id="right_right2" align="left">
+                    	<div align="left" id="h17" ></div>
+                        <div align="left" id="h18" ></div>
+                        <div id="link_context" align="left">
+                        	<div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>教育部教學卓越計畫網站</a></font><br>
+                                </div>
+                            </div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>上面放的第一筆標題文字是範例</a></font><br>
+                                </div>
+                            </div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>固定顯示10筆友情連結欄位</a></font><br>
+                                </div>
+                            </div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>每欄最多可放置16個字元</a></font><br>
+                                </div>
+							</div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>標題直接連結到文字標題之網站</a></font><br>
+                                </div>
+                            </div>
+                           <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>連結目標請設成「blank]</a></font><br>
+                                </div>
+                            </div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>  </a></font><br>
+                                </div>
+                            </div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>  </a></font><br>
+                                </div>
+							</div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>  </a></font><br>
+                                </div>
+                            </div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                            <div align="left" class="link_tab">
+                                <div align="left" class="link_bul">
+                                    <img src="../images/icon/arrow-brown.gif"/>
+                                </div>
+                                <div align="left" class="link_text">
+                                    <font id="Arial-brown"><a href='#' class='texthover'>  </a></font><br>
+                                </div>
+                            </div>
+                            <img src="../images/icon/dot_line-2.gif"/>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div  id="footer"  align="center">
+			<img src="../images/style/down-1.jpg" id="footer_pic">
+		</div>
+    </body>
+</html>

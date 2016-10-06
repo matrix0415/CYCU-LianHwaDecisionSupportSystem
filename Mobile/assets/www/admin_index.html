@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <!-- 從"html"開始也從"/html"結束 -->
+    <!--head放置javascript及css以及網頁的一些設定-->
+  
+   
+    <head>
+    
+    <style type="text/css">
+    .nav-list{
+		padding-left:0px;
+		}
+		
+	.nav{
+		padding-left:0px;
+		}	
+		
+	.ui-content{
+		padding:0px;
+		}
+    </style>
+        <meta http-equiv="Content-Language" content="zh-tw" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- 上面兩句說明使用的語言與文字 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width, height=device-height"/>
+        <!--引用的CSS及JAVASCRIPT檔案-->
+        <link rel="stylesheet" type="text/css" href="css/admin_index.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css"/>
+        <!--引用jquery-mobile的css-->
+        <script type="text/javascript" src="js/cordova-2.2.0.js"></script>
+		<script type="text/javascript" src="js/cordova-2.0.0.js"></script>
+        <!--引用phonegap的javascript-->
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <!--引用jquery的javascript-->
+        <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>		
+        <!--引用jquery-mobile的javascript-->
+        <script type="text/javascript" src="js/excanvas.min.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.flot.js"></script>
+        <!--引用jquery-chart-->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/showLoading.css" type="text/css" media="screen" />	
+		<script type="text/javascript" src="js/jquery.showLoading.min.js"></script>
+		<script type="text/javascript" src="js/jquery.showLoading.js"></script>
+        <script type="text/javascript">
+                   
+			
+			
+			
+            $(document).ready(function () {
+                var height = parseFloat($(window).height());
+                var width = parseFloat($(window).width());
+                $('#header').height(height * 0.1 - 15);
+				$('h1').css("fontSize", height*0.03);
+				$('h1').css("padding-top", height*0.035);
+                //$('#footer').height(height * 0.1 - 15); 
+				//$('#home ul').padding-top(height*0.1-15);
+                $('.li').height(height * 0.21 - 15);
+                $('.li').width(width);
+                $('.title').css("padding",(height * 0.18 - 15 - 30) / 2);
+				$('#placeholder').width(width*0.8-15);
+				$('#placeholder').height(height*0.65-15);
+				$('.number').css("padding-top", height*0.07-10);
+				$('.number').css("color", '#FFF');
+				
+				
+				$.ajax({
+					type:"POST",
+					url:'http://140.135.112.35/sa/postSocket.php',
+					dataType:"json",
+					data:
+						{
+						   category: "products_category",
+						},
+						beforeSend:function(){
+							jQuery('#divloading').showLoading();
+						},
+						success:function(msg){
+							var a11 = document.getElementById("101");
+							a11.value = msg[0].id;
+							var a21 = document.getElementById("301");
+							a21.innerHTML = msg[0].name;
+							var a31 = document.getElementById("201");
+							a31.innerHTML = msg[0].age;
+							var a12 = document.getElementById("102");
+							a12.value = msg[1].id;
+							var a22 = document.getElementById("302");
+							a22.innerHTML = msg[1].name;
+							var a32 = document.getElementById("202");
+							a32.innerHTML = msg[1].age;
+							var a13 = document.getElementById("103");
+							a13.value = msg[2].id;
+							var a23 = document.getElementById("303");
+							a23.innerHTML = msg[2].name;
+							var a33 = document.getElementById("203");
+							a33.innerHTML = msg[2].age;
+							var a14 = document.getElementById("104");
+							a14.value = msg[3].id;
+							var a24 = document.getElementById("304");
+							a24.innerHTML = msg[3].name;
+							var a34 = document.getElementById("204");
+							a34.innerHTML = msg[3].age;
+							var a15 = document.getElementById("105");
+							a15.value = msg[4].id;
+							var a25 = document.getElementById("305");
+							a25.innerHTML = msg[4].name;
+							var a35 = document.getElementById("205");
+							a35.innerHTML = msg[4].age;
+							/*var a16 = document.getElementById("106");
+							a16.value = msg[5].id;
+							var a26 = document.getElementById("306");
+							a26.innerHTML = msg[5].name;
+							var a36 = document.getElementById("206");
+							a36.innerHTML = msg[5].age;
+							var a17 = document.getElementById("107");
+							a17.value = msg[6].id;
+							var a27 = document.getElementById("307");
+							a27.innerHTML = msg[6].name;
+							var a37 = document.getElementById("207");
+							a37.innerHTML = msg[6].age;
+							var a18 = document.getElementById("108");
+							a18.value = msg[7].id;
+							var a28 = document.getElementById("308");
+							a28.innerHTML = msg[7].name;
+							var a38 = document.getElementById("208");
+							a38.innerHTML = msg[7].age;
+							var a19 = document.getElementById("109");
+							a19.value = msg[8].id;
+							var a29 = document.getElementById("309");
+							a29.innerHTML = msg[8].name;
+							var a39 = document.getElementById("209");
+							a39.innerHTML = msg[8].age;
+							var a111 = document.getElementById("111");
+							a111.value = msg[9].id;
+							var a211 = document.getElementById("311");
+							a211.innerHTML = msg[9].name;
+							var a311 = document.getElementById("211");
+							a311.innerHTML = msg[9].age;*/
+						},
+						complete:function(){
+							jQuery('#divloading').hideLoading();
+						},
+					});
+				
+                $(".li").bind("click", function () {
+				    
+					
+                  var num_ran=Math.floor((Math.random()*5)+1);
+		          var set_data=chart[num_ran-1];
+                                                                    
+                                   
+                                
+				});
+				
+
+			})
+        </script>
+    </head>
+    
+    <body>
+	    <script>
+		
+		$(function () {
+        var chartdata=[[new Date(2012, 10, 1), 150], [new Date(2012, 10, 25), 175], [new Date(2012, 11, 4),189],[new Date(2012, 11, 15),180],[new Date(2012, 12, 1),145],[new Date(2012, 12, 13),150]]
+       
+   
+   $.plot($("#placeholder"), 
+	[chartdata],
+	{
+	//設置圖表樣式
+	
+	//設置x,y軸
+	xaxis: 
+	  {
+       mode: "time",
+       timeformat: "%m/%d"
+	   
+      }
+	 ,
+	 yaxis: 
+	 {
+	  min: 0,
+      max: 300,
+	  tickSize: 50,
+      minTickSize:3 ,
+	  },
+	 //共有属性：点、线、柱状图的显示方式
+	  series: {
+       lines: { show: true, fill:false },
+       points: { show: true, fill: false }
+      }
+	  
+       
+      	  
+    }
+	);
+   
+   });
+		</script>
+		
+
+        <div data-role="page" id="main">
+            <div data-role="header" data-position="fixed" id="header">
+                 <h1>聯華食品巡點系統</h1>
+
+            </div>
+            <!--header結束-->
+            <div id="divloading">
+                <ul class="nav nav-list">
+					<li class="li yello" id="101" value=""  ><a href="#chart">
+
+					<span class="number" id="201"></span>
+					<p class="title" id="301"></p>
+					</a></li>
+					<li class="li blue" id="102" value="" ><a href="#chart">
+					<span class="number" id="202"></span>
+					<p class="title" id="302"></p>
+					</a></li>
+					<li class="li red" id="103" value="" ><a href="#chart">
+					<span class="number" id="203"></span>
+					<p class="title" id="303"></p>
+					</a></li>
+                    <li class="li perple" id="104" value="" ><a href="#chart">
+					<span class="number" id="204"></span>
+					<p class="title" id="304"></p>
+					</a></li>
+					<li class="li gray" id="105" value="" ><a href="#chart">
+					<span class="number" id="205"></span>
+					<p class="title" id="305"></p>
+					</a></li>
+                </ul>
+            </div>
+            <!--content結束-->
+            <!--<div data-role="footer" id="footer" data-position="fixed">
+                 <h4></h4>
+
+            </div>-->
+            <!--footer結束-->
+        </div>
+        <!--page結束-->
+        <div data-role="page" id="chart"  data-add-back-btn="true">
+            <div data-role="header" data-position="fixed" id="header">
+                 <h1>聯華食品巡點系統</h1>
+				 
+            </div>
+            <!--header結束-->
+            <div data-role="content">
+			    <p id="title"></p>
+                <div id="placeholder" style="margin:0 auto;"></div>
+            </div>
+            <!--圖表-->
+            <!--content結束-->
+        </div>
+		
+	<input type="hidden" id="type_products_id" name="product_hide" value=""/>	
+    </body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--input js-->
+   <script src="js/excanvas.min.js"></script>
+   <script src="js/jquery.js"></script>
+   <script src="js/jquery.flot.js"></script>
+   
+</head>
+<body>
+
+ 
+		
+		<div id="placeholder" style="width:600px;height:300px;"></div>
+	
+
+<script>
+  $(function () {
+   
+    var chartdata=[[new Date(2010, 1, 1), 1], [new Date(2010, 5, 1), 4], [new Date(2010, 10, 1),18]]
+	
+   $.plot($("#placeholder"), 
+	[chartdata],
+	{
+	//設置圖表樣式
+	
+	//設置x,y軸
+	xaxis: 
+	  {
+       mode: "time",
+       timeformat: "%m/%d"
+	   
+      }
+	 ,
+	 yaxis: 
+	 {
+	  min: 0,
+      max: 30,
+	  tickSize: 3,
+      minTickSize:3 ,
+	  },
+	 //共有属性：点、线、柱状图的显示方式
+	  series: {
+       lines: { show: true, fill:false },
+       points: { show: true, fill: false }
+      }
+	  
+       
+      	  
+    }
+	);
+   
+   });
+</script>
+</body>
+</head>
+</html>

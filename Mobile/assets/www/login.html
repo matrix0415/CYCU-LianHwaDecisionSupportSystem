@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- html5的宣告 -->
+<html>
+<!-- 從"html"開始也從"/html"結束 -->
+
+<!--head放置javascript及css以及網頁的一些設定-->
+<head>
+<meta http-equiv="Content-Language" content="zh-tw" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- 上面兩句說明使用的語言與文字 -->
+
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width, height=device-height" />
+
+<!--引用的CSS及JAVASCRIPT檔案-->
+<link rel="stylesheet" type="text/css" href="css/login.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css" />
+<!--引用jquery-mobile的css-->
+<script type="text/javascript" src="js/cordova-2.2.0.js"></script>
+<!--引用phonegap的javascript-->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<!--引用jquery的javascript-->
+<script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+<!--引用jquery-mobile的javascript-->
+
+<link rel="stylesheet" href="css/showLoading.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/jquery.showLoading.min.js"></script>
+<script type="text/javascript" src="js/jquery.showLoading.js"></script>
+
+<script type="text/javascript">
+			function success(result) {
+                var barcode = result[0];
+                var symbology = result[1]
+                alert("Scanned " + symbology + " code: " + barcode);
+            }
+            
+            function failure(error) {
+                alert("Failed: " + error);
+            }
+			function scan() {
+                cordova.exec(success, failure, "ScanditSDK", "scan",
+                        ["SbzBskYLEeKHI+Xhn+itjEvveS7ByDfdxhPfQT5RBUY", 
+                        {"beep": true, 
+                         "1DScanning": true,
+                         "2DScanning": true,
+                         "scanningHotspot": "0.5/0.5",
+                         "vibrate": true}]);
+            }
+		
+			$(document).ready(function()         
+			{
+			//alert($(window).height()); //浏览器当前窗口可视区域高度
+			//alert(screen.height);//显示器分辨率，只能用JavaScript代码获取
+			//alert(screen.width);
+			
+			
+			})
+			
+					jQuery(document).ready(function() {
+						var height =parseFloat($(window).height());
+						var width =parseFloat($(window).width());
+						$('#header').height(height*0.1-15);
+						$('h1').css("fontSize", height*0.03);
+						$('h1').css("padding-top", height*0.035);
+						$('#content').height(height);
+						$('#content').css("padding-top", height*0.1);
+						$('#login').height(height*0.5-15);
+						$('#login').width(width*0.5);
+						$('.login_text').height(30);
+						$('#account').width(width*0.5-15);
+						$('#password').width(width*0.5-15);
+						//$('.login_text').padding-top(height*0.2-15);
+
+						
+					//輸入事件，當使用者點下輸入框時，會清空裡面的資料
+					$("input[id]").bind("focus",function () { //focus在每一個有input記號的都會啟動這個事件
+					//判斷是否id為username或password時
+					if($(this).attr("id")=='account'||$(this).attr("id")=='password')
+					$(this).attr("value","");//清空裡面的值
+					});
+					//按下登入鍵的事件
+					$("#submit").bind("click", function() {
+					//判斷下方valid事件是否為true，也就是帳密都有值
+						if (valid()) {
+							//設定變數name為id是username的值
+							var val1 = $("#account").attr("value");
+							//設定變數passwd為id是password的值
+							var val2 = $("#password").attr("value");
+								$.ajax({
+								type:"POST",
+								url:'http://140.135.112.35/sa/postSocket.php',
+								dataType:"json",
+								data:{
+									id:val1,
+									pwd:val2,
+									},
+								beforeSend:function(){
+									jQuery('#content').showLoading();
+								},
+								success:function(msg){
+									if (msg.bool == "1"){
+											if (msg.permission == "巡店人員"){
+												location = 'index.html';
+												}			
+											else{
+												location = 'admin_index.html';
+												}
+									}
+									else{
+											alert('登入失敗');
+										}
+								},
+								complete:function(){
+									jQuery('#content').hideLoading();
+								},
+								});
+						}})
+					});
+					
+					//驗證帳號密碼是否有輸入
+					function valid(){
+					if($("#account").attr("value")==''||$("#password").attr("value")=='')
+					{
+					alert('帳號或密碼不允許空值！');
+					//$.mobile.changePage("content/loginfalse.html","slidedown", true, true);
+					return false;
+						}
+					return true;
+						};
+
+			
+				
+
+		</script>
+</head>
+
+<body>
+<div data-role="page"   id="page">
+  <div data-role="header"   data-position="fixed" id="header">
+    <h1>聯華食品巡點系統</h1>
+  </div>
+  <!--header結束-->
+  
+  <div data-role="content" id="content" style="background-image:url(img/Login_background.png)"> 
+    
+      <div id="login">
+        <form>
+          <input type="text"  name="account" id="account" value="2" class="login_text">
+          	
+        
+          <input type="password" name="password" id="password" value="test" class="login_text">
+        
+          <a data-role="button" id="submit" >LOGIN</a>
+        </form>
+      </div>
+    
+  </div>
+  <!--content結束-->
+</div>
+<!--page結束-->
+
+</body>
+</html>

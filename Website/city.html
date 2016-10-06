@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel=stylesheet type="text/css" href="View/css/menu.css">
+<link rel=stylesheet type="text/css" href="View/css/reset.css">
+<link rel=stylesheet type="text/css" href="View/css/chart.css">
+<link rel=stylesheet type="text/css" href="View/css/shop.css">
+<script type="text/javascript" src="View/js/jquery-1.8.3.min.js"></script>
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="View/js/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="View/css/jquery.fancybox.css?v=2.1.3" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox.pack.js?v=2.1.3"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="View/css/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="View/js/jquery.fancybox-media.js?v=1.0.5"></script>
+
+<link rel="stylesheet" href="View/css/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var val1 = document.getElementById("search");
+		$(".fancybox").fancybox();
+			
+				$.ajax({
+				   type:"POST",
+				   url:'http://140.135.112.35/sa/postSocket.php',
+				   dataType:"html",
+				   data:
+					{
+					   website_shop:"",
+					},
+					success:function(msg){
+						$('#table1').append(msg);
+							
+						}
+				});
+				
+				$('#search').keyup(function() {
+				
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.112.35/sa/postSocket.php',
+					   dataType:"html",
+					   data:
+						{
+						   website_shop:val1.value,
+						},
+						success:function(msg1){
+							$('#table1').empty();
+							$('#table1').append(msg1);
+							
+						}
+					});
+				
+				});
+	});
+	
+			function newshop1() {
+					var ns1 = document.getElementById("nh1").value;
+					var ns2 = document.getElementById("nh2").value;
+					var ns3 = document.getElementById("nh3").value;
+					var ns4 = document.getElementById("nh4").value;
+					var ns5 = document.getElementById("nh5").value;
+					var ns6 = document.getElementById("nh6").value;
+					var ns7 = document.getElementById("nh7").value;
+					var ns8 = document.getElementById("nh8").value;
+					var ns9 = document.getElementById("nh9").value;
+					
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.112.35/sa/postSocket.php',
+					   dataType:"html",
+					   data:
+						{
+						    shop_name:ns1,
+							chain_id:ns2,
+							areaid:ns3,
+							shop_phone:ns4,
+							shop_lat:ns5,
+							shop_lon:ns6,
+							shop_country:ns7,
+							shop_city:ns8,
+							shop_address:ns9,
+						},
+						success:function(msg1){
+							alert("新增成功");
+							$.fancybox.close()
+						}
+					});
+			}
+</script>
+
+<title>無標題文件</title>
+</head>
+
+<body>
+<div id="all">
+<div id="title">
+	<div id="logo">
+    	<img src="View/images/logo.png" id="logo"/>
+    </div>
+    <div id="new"><a  class="fancybox" href="#importshop" title="匯入店家"><img src="View/images/import.png" class="new"/></a>
+    <a  class="fancybox" href="#newshop" title="新增店家"><img src="View/images/new.png" class="new"/></a></div>
+
+        <div id="newshop" style="width: 400px; display: none;">
+            <h3>新增店家</h3>
+            <p>店家名稱</p><input type="text" id="nh1"/>
+            <p>通路ID</p><input type="text" id="nh2"/>
+            <p>地區ID</p><input type="text" id="nh3"/>
+			<p>店家電話</p><input type="text" id="nh4"/>
+			<p>店家GPS經度</p><input type="text" id="nh5"/>
+			<p>店家GPS緯度</p><input type="text" id="nh6"/>
+			<p>店家國家</p><input type="text" id="nh7"/>
+			<p>店家縣市</p><input type="text" id="nh8"/>
+			<p>店家地址</p><input type="text" id="nh9"/>
+            <input type="submit" value="確認" onclick="newshop1()"/>
+        </div>
+        
+        <div id="importshop" style="width: 400px; display: none;">
+            <h3>匯入店家</h3>
+            <p>店家名稱</p><input type="text" />
+            <input type="submit" value="確認"/>
+        </div>
+
+    <div class="search"><input type="text" class="search" id="search" value=""/></div>
+
+<div id="table">
+	<div id="tabletitleborder"><div id="tabletitle" >縣&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</div></div>
+<div id="table1">
+
+</div>          
+</div>
+<div id="left">
+	<div class="menu">
+    	<a href="date.html"><div class="picture"><img src="View/images/time.png" class="picture"/></div><div class="link">貨齡分析</div></a>
+    </div>
+    <div class="menu">
+        <div class="picture"><img src="View/images/chnnal.png" class="picture"/></div><div id="link">店家清單</div>
+    </div>
+    <div class="menu">
+        <a href="product.html"><div class="picture"><img src="View/images/product.png" class="picture"/></div><div class="link">商品清單</div></a>
+    </div>
+    <div class="menu">
+        <div class="picture"><img src="View/images/city.png" class="picture"/></div><div class="link">縣&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</div>
+    </div>
+    
+</div>
+
+</div>
+</div>
+</body>
+</html>

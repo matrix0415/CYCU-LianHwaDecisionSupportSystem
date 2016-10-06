@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- html5的宣告 -->
+<html>
+  	<!-- 從"html"開始也從"/html"結束 -->
+
+
+  	<!--head放置javascript及css以及網頁的一些設定-->
+	<head>
+    	<meta http-equiv="Content-Language" content="zh-tw" />
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    	<!-- 上面兩句說明使用的語言與文字 -->
+
+
+	    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width, height=device-height;" />
+	
+    	<!--引用的CSS及JAVASCRIPT檔案-->
+    	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css" />
+    	<!--引用jquery-mobile的css-->
+    	<script type="text/javascript" src="js/cordova-2.2.0.js"></script>
+    	<!--引用phonegap的javascript-->
+    	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    	<!--引用jquery的javascript-->
+    	<script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+    	<!--引用jquery-mobile的javascript-->
+		<script type="text/javascript">
+			function success(result) {
+                var barcode = result[0];
+                var symbology = result[1]
+                alert("Scanned " + symbology + " code: " + barcode);
+            }
+            
+            function failure(error) {
+                alert("Failed: " + error);
+            }
+			function scan() {
+                cordova.exec(success, failure, "ScanditSDK", "scan",
+                        ["SbzBskYLEeKHI+Xhn+itjEvveS7ByDfdxhPfQT5RBUY", 
+                        {"beep": true, 
+                         "1DScanning": true,
+                         "2DScanning": true,
+                         "scanningHotspot": "0.5/0.5",
+                         "vibrate": true}]);
+            }
+		</script>
+
+  	</head>
+
+  	<body>
+
+    	<div data-role="page"   id="page">
+
+      		<div data-role="header"   data-position="fixed">
+	        	<h1>頁首文字</h1>
+      		</div>
+      		<!--header結束-->
+	
+      		<div data-role="content">
+	
+				<button onclick="scan()" >scan</button>
+	    	</div>
+	      	<!--content結束-->
+
+	      	<div data-role="footer" data-position="fixed">
+		        <h4>頁尾文字</h4>
+      		</div>
+      <!--footer結束-->
+
+    	</div>
+    <!--page結束-->
+
+	</body>
+
+</html>

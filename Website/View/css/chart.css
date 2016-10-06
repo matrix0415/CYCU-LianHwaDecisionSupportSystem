@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+
+p.title{
+	padding-top:17px;
+	padding-left:10px;
+	}
+	
+p.xy{
+	color:#659564;
+	font-size:15px;
+	}
+	
+p.class{
+	
+	}
+
+div#xy{
+	width:300px;
+	float:left;
+	}
+
+div#xycontent{
+	width:300px;
+	color:#659564;
+	border-style:none;
+	margin-top:15px;
+	margin-left:10px;
+	}	
+	
+div#chart{
+	width:519px;
+	padding-left:5px;
+	float:left;
+	}
+	
+div#titlechart{
+	height:40px;
+	background-color:hsl(54, 67%, 84%);
+	color:hsl(44, 63%, 52%);
+	font-size:15px;
+	}
+	
+#titleborderchart{
+	height:42px;
+	padding-top:2px;
+	border:solid;
+	border-right-style:none;
+	border-top-color:hsl(52, 68%, 67%);
+	border-top-width:1px;
+	border-left-style:none;
+	border-bottom-color:hsl(52, 68%, 67%);
+	border-bottom-width:2px;
+	}
+	
+div#titlexy{
+	height:40px;
+	background-color:hsl(120, 100%, 90%);
+	color:hsl(120, 20%, 50%);
+	font-size:15px;
+	}
+	
+#titleborderxy{
+	height:42px;
+	padding-top:2px;
+	border:solid;
+	border-right-style:none;
+	border-top-color:hsl(120, 33%, 70%);
+	border-top-width:1px;
+	border-left-style:none;
+	border-bottom-color:hsl(120, 33%, 70%);
+	border-bottom-width:2px;
+	}
+	
+.child{
+	padding-top:20px;
+	}
+	
+#select_day{
+	width:499px;
+	}
+	
+#select_show{
+	color:hsl(52, 68%, 67%);
+	}
+	
+div#chartcontent{
+	margin-top:15px;
+	}

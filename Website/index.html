@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+
+<link rel=stylesheet type="text/css" href="View/css/login.css">
+<link rel=stylesheet type="text/css" href="View/css/reset.css">
+<!--引用jquery-mobile的css-->
+<script type="text/javascript" src="View/js/cordova-2.2.0.js"></script>
+<!--引用phonegap的javascript-->
+<script type="text/javascript" src="View/js/jquery-1.8.2.min.js"></script>
+<!--引用jquery的javascript-->
+
+<script type="text/javascript">
+	
+				jQuery(document).ready(function() {
+	
+					//輸入事件，當使用者點下輸入框時，會清空裡面的資料
+					$("input[id]").bind("focus",function () { //focus在每一個有input記號的都會啟動這個事件
+					//判斷是否id為username或password時
+					if($(this).attr("id")=='account'||$(this).attr("id")=='password')
+					$(this).attr("value","");//清空裡面的值
+					});
+					//按下登入鍵的事件
+					$("#submit").bind("click", function() {
+					//判斷下方valid事件是否為true，也就是帳密都有值
+						if (valid()) {
+							//設定變數name為id是username的值
+							var val1 = $("#account").attr("value");
+							//設定變數passwd為id是password的值
+							var val2 = $("#password").attr("value");
+								$.ajax({
+								type:"POST",
+								url:'http://140.135.112.35/sa/postSocket.php',
+								dataType:"json",
+								data:{
+									id:val1,
+									pwd:val2,
+									},
+								success:function(msg){
+									if (msg.bool == "1"){
+										location = 'date.html';
+									}
+									else{
+											alert('登入失敗');
+										}
+								},
+								});
+						}})
+					});
+					
+					//驗證帳號密碼是否有輸入
+					function valid(){
+					if($("#account").attr("value")==''||$("#password").attr("value")=='')
+					{
+					alert('帳號或密碼不允許空值！');
+					//$.mobile.changePage("content/loginfalse.html","slidedown", true, true);
+					return false;
+						}
+					return true;
+						};		
+						
+</script>
+
+</head>
+
+<body>
+<div id="all">
+<div class="title"><p class="title">聯華食品鮮度管理系統</p></div>
+<div class="picture"><img src="View/images/loginbackground.png" /></div>
+<div class="login">
+	<p class="login">登入</p>
+    <div ><input type="text" class="text" id="account" value="1"/></div>
+    <div ><input type="password" class="text" id="password" value="test"/></div>
+    <div id="RM"><input type="checkbox" checked="checked"/>Remember Me</div>
+    <div id="button"><input type="submit" id="submit" value="登入"/></div>
+</div>
+</div>
+</body>
+</html>

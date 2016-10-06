@@ -1,0 +1,72 @@
+@charset "utf-8";
+/* CSS Document */
+div#all{
+	width:1024px;
+	margin:0 auto;
+	}
+
+div.title{
+	height:100px;
+	width:100%;
+	border:solid;
+	border-width:3px;
+	border-top-style:none;
+	border-left-style:none;
+	border-right-style:none;
+	border-bottom-style:solid;
+	border-bottom-color:hsl(177, 12%, 67%);
+	margin-bottom:20px;
+	}
+
+p.title{
+	padding-top:70px;
+	font-size:25px;
+	color:hsl(176, 13%, 41%);
+	font-weight:bold;
+	}
+	
+div.picture{
+	float:left;
+	}
+	
+div.login{
+	float:right;
+	width:400px;
+	}
+
+p.login{
+	font-size:24px;
+	font-weight:bold;
+	margin-top:50px;	
+	}
+	
+.text{
+	height:35px;
+	width:400px;
+	margin-top:20px;
+	}
+
+div#RM{
+	float:left;
+	margin-top:13px;
+	color:#999;
+	}
+	
+div#button{
+	float:right;
+	margin-top:10px;
+	}	
+	
+#submit{
+	border-style:none;
+	width:50px;
+	height:30px;
+	background-image:-webkit-gradient(linear, left top, left bottom, from( #96BFE0 ), to( #007069 ));
+	background-image:-webkit-linear-gradient( #96BFE0, #007069 );
+	background-image:-moz-linear-gradient( #96BFE0, #007069 );
+	background-image:-ms-linear-gradient( #96BFE0, #007069 );
+	background-image:-o-linear-gradient( #96BFE0, #007069 );
+	background-image:linear-gradient( #96BFE0, #007069 );
+	color:#FFF;
+	font-weight:bold;
+	}	

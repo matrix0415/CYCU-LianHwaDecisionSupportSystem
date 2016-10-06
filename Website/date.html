@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="View/css/Styles.css" rel="stylesheet" type="text/css" />
+        <link rel=stylesheet type="text/css" href="View/css/menu.css">
+        <link rel=stylesheet type="text/css" href="View/css/reset.css">
+        <link rel=stylesheet type="text/css" href="View/css/chart.css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css"
+        />
+        <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+        <script type="text/javascript" src="View/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="View/js/excanvas.min.js"></script>
+        <script type="text/javascript" src="View/js/jquery.js"></script>
+        <script type="text/javascript" src="View/js/jquery-1.8.3.js"></script>
+        <script type="text/javascript" src="View/js/JQuery-ui.js"></script>
+        <script type="text/javascript" src="View/js/jquery.flot.js"></script>
+        <script type="text/javascript" src="View/js/JQuery.MenuTree.js"></script>
+        <!--圖表js檔-->
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var data_default = function () {
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://140.135.112.35/sa/postSocket.php', //chart URL
+                        dataType: "html",
+                        data: {
+                            buildChartList: "",
+                        },
+                        success: function (msg) {
+                            document.getElementById("xycontent").innerHTML = msg;
+                            //alert(msg);
+                            $('#xycontent').menuTree();
+                        }
+                    });
+                }
+                data_default();
+
+                $('#slider').slider({
+                    value: 1,
+                    min: 1,
+                    max: 15,
+					step: 2,
+                });
+
+                $("#slider").bind("slidechange", function (event, ui) {
+                    $('#amount').val(ui.value + '%');
+                    $("#select_show").val($('#slider').slider('value'));
+                });
+
+
+
+
+                var chartdata = []
+                var chartdata2 = []
+               
+                $.plot($("#placeholder1"), [chartdata2], {
+                    //設置x,y軸
+                    xaxis: {
+                        min: 0,
+                        max: 26,
+                        tickSize: 2,
+                        minTickSize: 3,
+
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 150,
+                        tickSize: 15,
+                        minTickSize: 3,
+                    },
+
+                    //共有属性：点、线、柱状图的显示方式
+                    series: {
+                        bars: {
+                            show: true,
+                            barWidth: 2,
+                            align: "left",
+                        },
+
+                    }
+                });
+
+
+                $.plot($("#placeholder"), [chartdata], {
+                    //設置x,y軸
+                    xaxis: {
+                        min: 0,
+                        max: 13,
+                        tickSize: 1,
+                        minTickSize: 1,
+                        ticks: [
+                            [1, "Jan"],
+                            [2, "Feb"],
+                            [3, "Mar"],
+                            [4, "Apr"],
+                            [5, "May"],
+                            [6, "Jun"],
+                            [7, "Jul"],
+                            [8, "Aug"],
+                            [9, "Sep"],
+                            [10, "Oct"],
+                            [11, "Nov"],
+                            [12, "Dec"]
+                        ]
+
+
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 150,
+                        tickSize: 15,
+                        minTickSize: 3,
+
+                    },
+
+                    //共有属性：点、线、柱状图的显示方式
+                    series: {
+                        lines: {
+                            show: true,
+                            fill: false,
+
+                        },
+                        points: {
+                            show: true,
+                            fill: false
+                        },
+
+                    },
+                    grid: {
+                        show: true,
+                    }
+                });
+                //預設網頁默認出現的柱形圖,折綫圖
+
+
+                $(".select").live('dragend', function () {
+
+               
+
+                    var val1, val2;
+                    var val1 = $(this).attr('value');
+                    var val2 = $(this).attr('id');
+                 
+
+
+                    if (val1 == "chain" || val1 == "area") {
+                        document.getElementById("type_optional").value = val1;
+                        document.getElementById("type_optional_id").value = val2;
+                        var get_title = document.getElementById(val2);
+                        document.getElementById("title2").value = get_title.innerHTML;
+                    } else {
+                        document.getElementById("type_products").value = val1;
+                        document.getElementById("type_products_id").value = val2;
+                        var get_title = document.getElementById(val2);
+                        document.getElementById("title1").value = get_title.innerHTML;
+                    }
+
+
+                    var options1 = {
+                        xaxis: {
+                            mode: "time",
+                            timeformat: "%m/%d"
+
+                        },
+                        yaxis: {
+                            min: 0,
+                            max: 150,
+                            tickSize: 30,
+                            minTickSize: 3,
+                        },
+                        series: {
+                            lines: {
+                                show: true,
+                                fill: false
+                            },
+                            points: {
+                                show: true,
+                                fill: true
+                            }
+                        }
+                    };
+
+                    if (document.getElementById("type_optional").value == "" || document.getElementById("type_products").value == "") {
+                      ;
+                    } else {
+                        var val11, val22, val33, val44, val55;
+
+                        var val11 = document.getElementById("type_products").value;
+                        var val22 = document.getElementById("type_products_id").value;
+                        var val33 = document.getElementById("type_optional").value;
+                        var val44 = document.getElementById("type_optional_id").value;
+                        var val55 = $("#slider").slider("value");
+                        if (val22 == "0") {
+                            val22 ="";
+                        }
+                        if (val44 == "0") {
+                            val44 ="";
+                        }
+
+                        var ajax_chart = function (val11, val22, val33, val44, val55) {
+
+                            $.ajax({
+                                type: "POST",
+                                url: 'http://140.135.112.35/sa/postSocket.php', //chart URL
+                                dataType: "html",
+                                data: {
+                                    type_products: val11,
+                                    type_products_id: val22,
+                                    type_optional: val33,
+                                    type_optional_id: val44,
+                                    interval: val55,
+                                    secondary: 6,
+                                },
+
+                                success: function (msg) {
+
+
+                                    var set_chart1 = document.getElementById('chart1_title');
+                                    var set_chart2 = document.getElementById('chart2_title');
+                                    set_chart1.innerHTML = document.getElementById('title1').value + "在 " + document.getElementById('title2').value + "中的貨年齡情況分析折綫圖";
+                                    set_chart2.innerHTML = "在 " + document.getElementById('title2').value + "中，" + document.getElementById('title1').value + "的貨齡情況分析柱形圖";
+                                    var cut = new Array();
+                                    cut = msg.split('|');
+                                    var length_num = cut.length;
+                                    //alert(length_num);
+                                    var i;
+                                    var data1 = new Array();
+                                    var x = new Array();
+                                    var x_set = new Array();
+                                    var data2 = new Array();
+									var cut2 = new Array();
+                                    for (i = 0; i < 14; i++) {
+                                        
+                                        var temp = cut[i];
+                                        cut2= temp.split(';');
+										console.log(cut2);
+                                        if (cut2[0] != "true") {
+
+                                            data1.push([new Date(cut2[1]), cut2[2]]);
+
+                                        } else {
+
+                                            x = cut2[1].split(',');
+                                            x_set.push([x[0], x[1]]);
+                                            data2.push([x[0], cut2[2]]);
+
+                                         
+                                        }
+                                    };
+
+                                    
+                                    var options2 = {
+                                        xaxis: {
+                                            min: 0,
+                                            max: 20,
+                                            tickSize: 2,
+                                            minTickSize: 3,
+											 show:true,
+                                            ticks: x_set,
+											
+                                        },
+
+                                        yaxis: {
+                                            min: 0,
+                                            max: 350,
+                                            tickSize: 50,
+                                            minTickSize: 3,
+                                        },
+                                        series: {
+                                            bars: {
+                                                show: true,
+                                                barWidth: 2,
+                                                align: "left"
+                                            },
+                                            lines: {
+                                                show: false,
+                                                fill: false
+                                            },
+                                            points: {
+                                                show: false,
+                                                fill: false
+                                            }
+                                        }
+                                    };
+                                    
+
+                                    $.plot($("#placeholder"), [data1], options1);
+                                    $.plot($("#placeholder1"), [data2], options2);
+
+                                },
+
+                                error: function () {
+                                    alert("failed");
+                                }
+
+                            });
+
+                        };
+
+                        ajax_chart(val11, val22, val33, val44, val55);
+                    };
+                });
+
+
+            });
+
+            $( ".selector" ).on( "slidechange", function( event, ui ){
+			
+				if (document.getElementById("type_optional").value != "" && document.getElementById("type_products").value != ""){
+				    var val11 = document.getElementById("type_products").value;
+                    var val22 = document.getElementById("type_products_id").value;
+                    var val33 = document.getElementById("type_optional").value;
+                    var val44 = document.getElementById("type_optional_id").value;
+                    var val55 = $("#slider").slider("value");
+                        if (val22 == "0") {
+                            val22 = "";
+                        }
+                        if (val44 == "0") {
+                            val44 = "";
+                        }
+						
+						ajax_chart(val11, val22, val33, val44, val55);
+				}
+			
+			});
+			
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drag(ev) {
+                ev.dataTransfer.setData("Text", ev.target.id);
+
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("Text");
+
+            }
+        </script>
+        <title>無標題文件</title>
+    </head>
+    
+    <body>
+        <div id="all">
+            <div id="title">
+                <div id="logo">
+                    <img src="View/images/logo.png" id="logo" />
+                </div>
+            </div>
+            <div id="left">
+                <div class="menu">
+                    <div class="picture">
+                        <img src="View/images/time.png" class="picture" />
+                    </div>
+                    <div id="link">貨齡分析</div>
+                </div>
+                <div class="menu">
+                    <a href="shop.html">
+                        <div class="picture">
+                            <img src="View/images/chnnal.png" class="picture" />
+                        </div>
+                        <div class="link">店家清單</div>
+                    </a>
+                </div>
+                <div class="menu">
+                    <a href="product.html">
+                        <div class="picture">
+                            <img src="View/images/product.png" class="picture" />
+                        </div>
+                        <div class="link">商品清單</div>
+                    </a>
+                </div>
+                <div class="menu">
+                    <a href="agelist.html">
+                        <div class="picture">
+                            <img src="View/images/city.png" class="picture" />
+                        </div>
+                        <div class="link">貨齡清單</div>
+                    </a>
+                </div>
+		<div class="menu">
+                    <a href="http://140.135.113.33:8080/member.jsp">
+                        <div class="picture">
+                            <img src="View/images/city.png" class="picture" />
+                        </div>
+                        <div class="link">人員管理</div>
+                    </a>
+                </div>
+            </div>
+            <div id="table">
+                <div id="xy">
+                    <div id="titleborderxy">
+                        <div id="titlexy">
+                            <p class="title">x軸</P>
+                        </div>
+                    </div>
+                    <div id="xycontent" class="menuTree"></div>
+                </div>
+                <div id="chart">
+                    <div id="titleborderchart">
+                        <div id="titlechart">
+                            <P class="title">圖表分析</P>
+                        </div>
+                    </div>
+                    <div id="chartcontent">
+                        <label for="select_show" style="margin-top:20px; margin-left:10px; margin-bottom:10px; color:hsl(44, 63%, 52%);">選擇統計時間區段：</label>
+                        <input type="text" class="day" id="select_show" value="1"
+                        style="margin-bottom:10px;" />
+                        <div id="slider" class="select_day"></div>
+                        
+						<div>
+                            <P class="title" id="chart2_title" style="margin-top:20px;color:hsl(44, 63%, 52%);">貨齡分析柱形圖</P>
+                        </div>
+                        <div class="selectc" id="placeholder1" style="width:500px;height:400px;margin-left:10px;margin-right:10px;margin-top:10px;"
+                        ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                        <div>
+                            <P class="title" id="chart1_title" style="margin-top:20px;color:hsl(44, 63%, 52%);">貨齡分析折綫圖</P>
+                        </div>
+                        <div class="selectc" id="placeholder" style="width:500px;height:400px;margin-left:10px;margin-right:10px;margin-top:10px;"
+                        ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <input type="hidden" id="type_optional" name="area_chain_hide" value=""
+        />
+        <input type="hidden" id="type_optional_id" name="area_chain_hide" value=""
+        />
+        <input type="hidden" id="type_products" name="product_hide" value="" />
+        <input type="hidden" id="type_products_id" name="product_hide" value=""
+        />
+        <input type="hidden" id="title1" value="" />
+        <input type="hidden" id="title2" value="" />
+    </body>
+
+</html>

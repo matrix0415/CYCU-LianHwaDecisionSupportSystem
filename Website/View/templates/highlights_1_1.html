@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script language="javascript">
+        	$(function(){
+				$('.TopHoverMenu').hover(function(){
+					var ImgN=$(this).index();
+					var ImgRoot="../images/style/top_button/";
+					switch(ImgN+1){
+						case 1:
+							$(this).attr("src",ImgRoot+"1-2.jpg");
+						break;
+						case 2:
+							$(this).attr("src",ImgRoot+"2-2.jpg");
+						break;
+						case 3:
+							$(this).attr("src",ImgRoot+"3-2.jpg");
+						break;
+						case 4:
+							$(this).attr("src",ImgRoot+"4-2.jpg");
+						break;
+						case 5:
+							$(this).attr("src",ImgRoot+"5-2.jpg");
+						break;
+						case 6:
+							$(this).attr("src",ImgRoot+"6-2.jpg");
+						break;
+						case 7:
+							$(this).attr("src",ImgRoot+"7-2.jpg");
+						break;
+					}
+				},function(){
+					var ImgN=$(this).index();
+					var ImgRoot="../images/style/top_button/";
+					switch(ImgN+1){
+						case 1:
+							$(this).attr("src",ImgRoot+"1-1.jpg");
+						break;
+						case 2:
+							$(this).attr("src",ImgRoot+"2-1.jpg");
+						break;
+						case 3:
+							$(this).attr("src",ImgRoot+"3-1.jpg");
+						break;
+						case 4:
+							$(this).attr("src",ImgRoot+"4-1.jpg");
+						break;
+						case 5:
+							$(this).attr("src",ImgRoot+"5-1.jpg");
+						break;
+						case 6:
+							$(this).attr("src",ImgRoot+"6-1.jpg");
+						break;
+						case 7:
+							$(this).attr("src",ImgRoot+"7-1.jpg");
+						break;
+					}
+				});
+			});
+			
+			$(function(){
+				$('.MoreHover').hover(function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/icon/more_2.gif");
+				},function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/icon/more_1.gif");
+				});
+			});
+			
+			$(function(){
+				$('.GoHover1').hover(function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/index/block-go1-2.gif");
+				},function(){
+					var ImgN=$(this)
+					$(this).attr("src","../images/index/block-go1-1.gif");
+				});
+			});
+			
+			$(function(){
+				$('.GoHover2').hover(function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/index/block-go2-2.gif");
+				},function(){
+					var ImgN=$(this)
+					$(this).attr("src","../images/index/block-go2-1.gif");
+				});
+			});
+			
+			$(function(){
+				$('.GoHover3').hover(function(){
+					var ImgN=$(this);
+					$(this).attr("src","../images/index/block-go3-2.gif");
+				},function(){
+					var ImgN=$(this)
+					$(this).attr("src","../images/index/block-go3-1.gif");
+				});
+			});
+			
+			$(function(){
+				$('.texthover').hover(function(){
+					var ImgN=$(this);
+					$(this).css('color', 'gray');
+				},function(){
+					var ImgN=$(this);
+					$(this).css('color', '#333333');
+				});
+			});
+        </script>
+    	<link href="../css/Sanchuang.css" rel="stylesheet">
+        <link href="../css/index.css" rel="stylesheet">
+		<title>中原大學  教學卓越三創暨創新創業紮根資訊網</title>    
+    </head>
+    <body>
+    	<div id="wrap">
+        	<div id="top" align="left">
+            	<div id="top_left">
+                	<img src="../images/style/logo-2.jpg"/>
+                </div>
+                <div id="top_right1">
+                	<img src="../images/style/name.jpg"/>
+                </div>
+                <div id="tab1">
+                </div>
+                <div id="top_right2">
+                	<div id="top_text">
+                    	<span id="Arial-brown" >
+                            <br>
+                            <a href="http://www.philia.com.tw/chung-yuan/index.html" class='texthover'>回首頁</a>
+                            &nbsp;|&nbsp;&nbsp; 
+                            <a href="http://www.philia.com.tw/chung-yuan/index.html" class='texthover'>English</a>
+                        </span>
+                    </div>
+                    <div id="top_input">
+                    	<input type="text" name="name" align="right">
+                    	<img id="search"  src="../images/icon/search.gif"/>
+                    </div>
+                </div>
+                <div id="top_right3" align="left">
+                	<img class="pic_title" class="TopHoverMenu" src="../images/style/top_button/1-1.jpg"/>
+                    <img class="pic_title" class="TopHoverMenu" src="../images/style/top_button/2-1.jpg"/>
+            		<img class="pic_title" class="TopHoverMenu" src="../images/style/top_button/3-1.jpg"/>
+            		<img class="pic_title" class="TopHoverMenu" src="../images/style/top_button/4-1.jpg"/>
+            		<img class="pic_title" class="TopHoverMenu" src="../images/style/top_button/5-1.jpg"/>
+            		<img class="pic_title" class="TopHoverMenu" src="../images/style/top_button/6-1.jpg"/>
+            		<img class="pic_title" class="TopHoverMenu" src="../images/style/top_button/7-1.jpg"/>
+                    
+                </div>
+            </div>
+			<section>
+			<div id="pic_bg">
+				<img align="center" src="../images/style/top_banner.jpg"/>
+			</div>
+			
+			<div id="nav" align="center">
+				<div id="nav_1" align="center">
+					<div id="pic_left" align="center">
+						<img src="../images/style/left_shadow.jpg"/>
+					</div>
+					
+					<div id="menu" align="center">
+						<img id="menu1" src="../images/center/left_button/left_button_top.gif"/><br/>
+						<img id="menu2" src="../images/center/left_button/1-1.gif"/>
+						<img id="line1" src="../images/style/left_button_line.gif"/>
+						<img id="menu3" src="../images/center/left_button/2-1.gif"/>
+						<img id="line2" src="../images/style/left_button_line.gif"/>   
+						<img id="menu4" src="../images/center/left_button/3-1.gif"/>
+						<img id="menu5" src="../images/center/left_button/3-1-1.gif"/>
+						<img id="menu6" src="../images/center/left_button/3-2-1.gif"/>
+						<img id="line3" src="../images/style/left_button_line.gif"/>
+						<img id="menu7" src="../images/center/left_button/4-1.gif"/>
+						<img id="menu8" src="../images/center/left_button/4-1-1.gif"/>
+						<img id="menu9" src="../images/center/left_button/4-2-1.gif"/>
+					</div>
+				
+					<div id="pic_right" align="center">
+					  <img src="../images/style/right_shadow.jpg"/>
+					</div>
+					<div id="pic_bottom">
+						<img src="../images/style/left_button_down.gif"/>
+					</div>
+				</div>
+            
+				<div id="nav_2" align="center">
+				  <img id="pic3_1" src="../images/style/left_banner_1-1.gif">
+				  <img id="pic3_2" src="../images/style/left_banner_2-1.gif">
+				  <img id="pic3_3" src="../images/style/left_banner_3-1.gif">
+				</div>
+            
+				<div id="nav_3"><center>
+				  <img id="pic3_4" src="../images/style/left_contact-1.gif">
+				  <img id="line4" src="../images/style/left_button_line-1.gif">
+				  <img id="pic3_5" src="../images/style/left_prize-1.gif">
+				  <img id="line5" src="../images/style/left_button_line-1.gif">
+				  <img id="pic3_6" src="../images/style/left_sitemap-1.gif">
+				</center></div>
+			</div>
+				<div id="content_in">
+					<div align="left" id="content_title">
+						<div align="left" id="title_left">
+							<img src="../images/style/title_left.gif"/>
+						</div>
+						<div align="left" id="title_center">
+							<div align="left" id="title_h"></div>
+                            <div align="left" id="contest_h"></div>									
+							<div align="left" id="title_text"> 
+								<img id="arrow" src="../images/icon/arrow-14.gif"/>
+								<div id="title_w"></div>
+								<img src="../images/prize/title_1.gif"/>
+							</div>
+							<div> 
+								<img id="home" src="../images/icon/home.gif"/>
+								<p> > 得獎訊息 > 師生得獎訊息</p>
+							</div>							</div>
+						<div align="left" id="title_right">
+							<img src="../images/style/title_right.gif"/>
+						</div>
+					</div>
+                    <div align="left" id="context">
+                        <div align="left" id="context_top2">
+                            <img align="left" id="contest_pic" src="../images/style/detail/contest.gif"/>
+                            <div align="left" class="contest_text_1"><font>三創導向的鏈結產業與實作之專業教育『99學年創新創意實作競賽』</font></div>
+                            <img align="left" id="contest_pic" src="../images/style/detail/sign-up.gif"/>
+                            <div align="left"><font><a href="#" class="contest_text_1" class='texthover'>2011.09.05~2011.10.05</a></font></div>
+                            
+                        </div>
+                        <div align="left" id="context_title1">
+                        	<img src="../images/style/detail/main-1.gif"/>
+                        </div>
+                        <div align="left" id="context_title2">
+                        	<div align="left" id="context_center"><img src="../images/style/detail/contest-main.gif"/></div>
+                        </div>
+                        <div align="left" id="context_title1">
+                        	<img src="../images/style/detail/main-2.gif"/>
+                        </div>
+                        <div align="left" id="content_text">
+								
+							<p>為提升學生學習成效及配合產業界實務運用工程製圖與建築製圖之技能。</p>
+													
+							<p>本系計畫於九十八學年度舉行一次AutoCAD競賽，其目的為以競賽方式達到學生相互切磋、觀摩及激發學習興趣之目的，</p>
+													
+							<p>除可瞭解學生學習成效、提升技能水準，並可提供教學參考。</p> 
+													
+							<p>競賽內容設計以「技能測驗」與「套圖」兩部份為主，內容涵蓋實務上的工程製圖與建築製圖，</p>
+													
+							<p>並模擬『電腦輔助建築製圖丙級技術士』技能檢定之試題，每次競賽均選不一樣之主題，具有一定的深度和廣度。</p>
+													
+							<p><strong>比賽時間：</strong></p>
+													
+							<p>
+							投稿：2011/09/24~2012/10/23<br>
+							投票：2012/10/1~2012/10/23<br>
+							公佈得獎名單：2012/10/30<br>
+							</p>
+													
+							<p><strong>參賽資格：</strong></p>
+													
+							<p>
+							1.須為中原大學在學之學生<br>
+							2.本活動參加資格不限國籍，海內外人士均可參與<br>
+							</p>
+													
+							<p><strong>獎品內容：</strong></p>
+													
+							<p>
+							第一名：禮卷1,500元+參加獎禮卷100元<br>
+							第二名：禮卷1,000元+參加獎禮卷100元<br>
+							第三名：禮卷500元+參加獎禮卷100元<br>
+							</p>
+													
+							<p><strong>評分方式：</strong></p>
+													
+							<p>
+							情境構圖(30%)：作品的主題切合度與構圖。<br>
+							文字說明(30%)：主題切合度、文筆與故事性。<br>
+							創意表現(20%)：作品的獨創性。<br>
+							網路票選(20%)：每獲得一張網友投票可獲得 0.01 分，最高可獲得二十分。<br>
+							</p>
+													
+							<p>3.公佈結果：在2011/10/30將比賽結果公佈於爸說活動官網上</p><br><br>
+							<div align="left" id="contest_button">
+                            	<font id="blue">/*本欄位請提供圖文編輯器供管理者編輯*/</font>
+                            </div>
+							<div align="left" id="hr"><img src="../images/style/list/line.gif"/></div>
+							<br><br><br><br>
+                        </div>
+                	</div>
+                    <div align="left" id="button_back">
+                    	<a href="contest_1.html"><img src="../images/icon/back.gif"/ id="back_all"></a>
+                    </div>	
+				</div>
+			</section>
+		</div>
+        <div  id="footer"  align="center">
+			<img src="../images/style/down-1.jpg" id="footer_pic">
+		</div>
+    </body>
+</html>
+
+

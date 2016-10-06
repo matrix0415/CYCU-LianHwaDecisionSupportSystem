@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="View/css/Styles.css" rel="stylesheet" type="text/css" />
+<link rel=stylesheet type="text/css" href="View/css/menu.css">
+<link rel=stylesheet type="text/css" href="View/css/reset.css">
+<link rel=stylesheet type="text/css" href="View/css/chart.css">
+<link rel=stylesheet type="text/css" href="View/css/shop.css">
+<script type="text/javascript" src="View/js/jquery-1.8.3.min.js"></script>
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="View/js/jquery.mousewheel-3.0.6.pack.js"></script>
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="View/css/jquery.fancybox.css?v=2.1.3" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox.pack.js?v=2.1.3"></script>
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="View/css/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="View/js/jquery.fancybox-media.js?v=1.0.5"></script>
+<link rel="stylesheet" href="View/css/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+<script type="text/javascript" src="View/js/jquery.yql.js"></script>
+<!--引用jquery.yql的javascript-->
+<script type="text/javascript" src="View/js/JQuery-ui.js"></script>
+<script type="text/javascript" src="View/js/JQuery.MenuTree.js"></script>
+<link rel="stylesheet" href="View/css/showLoading.css" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.showLoading.min.js"></script>
+<script type="text/javascript" src="View/js/jquery.showLoading.js"></script>
+
+<script type="text/javascript">
+            
+
+	$(document).ready(function() {
+		var val1 = document.getElementById("search");
+		$(".fancybox").fancybox();
+
+				$.ajax({
+				   type:"POST",
+				   url:'http://140.135.112.35/sa/postSocket.php',
+				   dataType:"html",
+				   data:
+					{
+					   website_shop:"",
+					},
+					beforeSend:function(){
+						jQuery('#table1').showLoading();
+					},
+					success:function(msg){
+						$('#table1').append(msg);
+					},
+					complete:function(){
+						jQuery('#table1').hideLoading();
+					},
+				});
+				
+				$.ajax({
+				   type:"POST",
+				   url:'http://140.135.112.35/sa/postSocket.php',
+				   dataType:"html",
+				   data:
+					{
+					   area_upper:"1",
+					},
+					beforeSend:function(){
+						jQuery('#citycontent').showLoading();
+					},
+					success:function(msg){
+						$('#citycontent').append(msg);
+						$('#citycontent').menuTree();
+					},
+					complete:function(){
+						jQuery('#citycontent').hideLoading();
+					},
+				});
+				
+				$('#search').keyup(function() {
+				
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.112.35/sa/postSocket.php',
+					   dataType:"html",
+					   data:
+						{
+						   website_shop:val1.value,
+						},
+						success:function(msg1){
+							$('#table1').empty();
+							$('#table1').append(msg1);
+							
+						}
+					});
+				
+				});
+	});
+			
+			//點縣市搜尋
+				function areaclick (msg0) {
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.112.35/sa/postSocket.php',
+					   dataType:"html",
+					   data:
+						{
+						   website_shop_area:msg0,
+						},
+						success:function(msg4){
+							$('#table1').empty();
+							$('#table1').append(msg4);
+						}
+					});
+				
+				};
+			
+			function newshop1() {
+					var ns1 = document.getElementById("nh1").value;
+					var ns2 = document.getElementById("nh2").value;
+					var ns3 = document.getElementById("nh3").value;
+					var ns4 = document.getElementById("nh4").value;
+					var ns5 = document.getElementById("nh5").value;
+					var ns6 = document.getElementById("nh6").value;
+					var ns7 = document.getElementById("nh7").value;
+					var ns8 = document.getElementById("nh8").value;
+					var ns9 = document.getElementById("nh9").value;
+					
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.113.236/postSocket.php',
+					   dataType:"html",
+					   data:
+						{
+						    shop_name:ns1,
+							chain_id:ns2,
+							areaid:ns3,
+							shop_phone:ns4,
+							shop_lat:ns5,
+							shop_lon:ns6,
+							shop_country:ns7,
+							shop_city:ns8,
+							shop_address:ns9,
+						},
+						success:function(msg1){
+							alert("新增成功");
+							$.fancybox.close();
+							location.reload();
+						}
+					});
+			}
+			
+			function newarea() {
+					var are1 = document.getElementById("ar1").value;
+					var are2 = document.getElementById("ar2").value;
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.112.35/sa/postSocket.php',
+					   dataType:"html",
+					   data:
+						{
+						    area_name:are2,
+							area_layer:"3",
+							area_upper:are1,
+						},
+						success:function(msg7){
+							alert("新增成功");
+							$.fancybox.close();
+							location.reload();
+						}
+					});
+			}
+</script>
+
+<title>無標題文件</title>
+</head>
+
+<body>
+<div id="all">
+<div id="title">
+	<div id="logo">
+    	<img src="View/images/logo.png" id="logo"/>
+    </div>
+    <div id="new"><a  class="fancybox" href="#newshop" title="新增店家"><img src="View/images/new.png" class="new"/></a></div>
+
+        <div id="newshop" style="width: 400px; display: none;">
+            <h3>新增店家</h3>
+            <p>店家名稱</p><input type="text" id="nh1"/>
+            <p>通路ID</p><input type="text" id="nh2"/>
+            <p>地區ID</p><input type="text" id="nh3"/>
+			<p>店家電話</p><input type="text" id="nh4"/>
+			<p>店家GPS經度</p><input type="text" id="nh5"/>
+			<p>店家GPS緯度</p><input type="text" id="nh6"/>
+			<p>店家國家</p><input type="text" id="nh7"/>
+			<p>店家縣市</p><input type="text" id="nh8"/>
+			<p>店家地址</p><input type="text" id="nh9"/>
+            <input type="submit" value="確認" onclick="newshop1()"/>
+        </div>
+        
+    <div class="search"><input type="text" class="search" id="search" value=""/></div></div>
+
+<div id="table">
+  <div id="city">
+    	<div id="citytitleborder">
+        	<div id="citytitle">
+            	<div class="citytitle">
+                	縣市標籤&nbsp;&nbsp;<a  class="fancybox" href="#newcity" title="新增縣市標籤"><img src="View/images/newcity.png" class="newcity"/></a>
+                </div>
+                <div id="newcity" style="width: 400px; display: none;">
+                	<h3>新增縣市標籤</h3>
+                    <br /><br />
+                    <p>地區</p><select id="ar1"><option value="2">北部</option>
+                    				  <option value="4">中部</option>
+                                      <option value="5">南部</option>
+									  <option value="6">東部</option>
+									  <option value="9">離島地區</option>
+                    			</select>
+                    <p>名稱</p><input type="text" id="ar2"/>
+                    <input type="submit" value="確認" onclick="newarea()"/>
+                </div>
+             </div>
+        </div>
+        <div id="citycontent" class="menuTree">
+        	
+        </div>
+  </div>
+  <div id="shop">
+	<div class="shoptitleborder"><div class="shoptitle"><div id="shoptitle">店家</div><div id="channeltitle">通路</div><div id="addresstitle">地址</div></div></div>
+		<div id="table1">
+		</div>          
+  </div>
+</div>
+<div id="left">
+	<div class="menu">
+    	<a href="date.html"><div class="picture"><img src="View/images/time.png" class="picture"/></div><div class="link">貨齡分析</div></a>
+    </div>
+    <div class="menu">
+        <div class="picture"><img src="View/images/chnnal.png" class="picture"/></div><div id="link">店家清單</div>
+    </div>
+    <div class="menu">
+        <a href="product.html"><div class="picture"><img src="View/images/product.png" class="picture"/></div><div class="link">商品清單</div></a>
+    </div>
+    <div class="menu">
+        <a href="agelist.html"><div class="picture"><img src="View/images/city.png" class="picture"/></div><div class="link">貨齡清單</div></a>
+    </div>
+                <div class="menu">
+                    <a href="http://140.135.113.33:8080/member.jsp">
+                        <div class="picture">
+                            <img src="View/images/city.png" class="picture" />
+                        </div>
+                        <div class="link">人員管理</div>
+                    </a>
+                </div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

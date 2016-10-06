@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<!-- html5的宣告 -->
+<html>
+<!-- 從"html"開始也從"/html"結束 -->
+
+<!--head放置javascript及css以及網頁的一些設定-->
+<head>
+<meta http-equiv="Content-Language" content="zh-tw" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- 上面兩句說明使用的語言與文字 -->
+
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  width=device-width, height=device-height" />
+
+<!--引用的CSS及JAVASCRIPT檔案-->
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css" />
+<!--引用jquery-mobile的css-->
+<script type="text/javascript" src="js/cordova-2.2.0.js"></script>
+<!--引用phonegap的javascript-->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<!--引用jquery的javascript-->
+<script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+<!--引用jquery-mobile的javascript-->
+<script type="text/javascript" src="js/gps_lat_function.js"></script>
+<script type="text/javascript" src="js/gps_lon_function.js"></script>
+<!--引用jqurey_gps的function-->
+<script type="text/javascript" src="js/ajax.js"></script>
+<link href="css/mobiscroll-2.3.1.custom.min.css" rel="stylesheet" type="text/css" />
+<script src="js/mobiscroll-2.3.1.custom.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="css/showLoading.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/jquery.showLoading.min.js"></script>
+<script type="text/javascript" src="js/jquery.showLoading.js"></script>
+<script type="text/javascript">
+
+			
+			var opt = {
+				preset: 'date', //日期
+				theme: 'jqm', // 皮膚樣式
+				display: 'modal', // 顯示方式 
+				mode: 'Scroller', //日期選擇模式
+				dateFormat: 'yy-mm-dd', // 日期格式
+				setText: '確定', //確認日期
+				cancelText: '取消',//取消按鈕
+				dateOrder: 'yymmdd', //面板中日期排版格式
+				dayText: '日', monthText: '月', yearText: '年', //面板中的年月日文字
+				endYear:2050 //面板中的最大年份
+				};
+			
+			function success(result) {
+				var val12 = result[0];
+				var symbology = result[1];
+				//alert("Scanned " + symbology + " code: " + val12);
+				document.getElementById("pid").value = val12;
+				$.ajax({
+					type:"POST",
+					url:'http://140.135.112.35/sa/postSocket.php', //define_product URL
+					dataType:'json',
+					data:
+					{
+						pid:val12,
+					},
+					beforeSend:function(){
+						jQuery('#product').showLoading();
+					},
+					success:function(msg){
+						if (msg == ""){
+							alert("查無此商品");
+						}
+						else{
+						var a11 = document.getElementById("AA");
+						a11.innerHTML = msg[0].products_name;
+						var b11 = document.getElementById("code");
+						b11.innerHTML = val12;
+						var qwe = document.getElementById('date')
+						qwe.onclick = function(){a2();};//解鎖日期按鈕
+						}
+					},
+					error:function(){
+						var b11 = document.getElementById("code");
+						b11.innerHTML = val12;
+					},
+					complete:function(){
+						jQuery('#product').hideLoading();
+					},
+				});
+			}
+            
+			function failure(error) {
+				alert("Failed: " + error);
+			}
+			
+			function a2() {
+				var timedead;
+				var a111;
+				$('#deadline').triggerHandler('focus');
+			}
+			function a22() {
+				timedead = document.getElementById("deadline").value;
+				a111 = document.getElementById("BB");
+				a111.innerHTML = timedead;
+				$("h4").css("color","#b4d13b");
+				var qwe1 = document.getElementById('footer')
+					qwe1.onclick = function(){okbtn();};//解鎖OK按鈕
+			}
+			function okbtn() {
+				
+				var asd1 = "1";
+				var asd2 = "8";
+				val12 = document.getElementById("pid").value;
+				time = document.getElementById("deadline").value;
+				
+				//現在時間
+				rightnow = new Date();
+				var nowtime = rightnow.getFullYear()+"-"+(rightnow.getMonth()+1)+"-"+rightnow.getDate();
+				
+				$.ajax({
+					type:"POST",
+					url:'http://140.135.112.35/sa/postSocket.php', //record URL
+					dataType:'json',
+					data:
+						{
+							uid:asd1,//員工編號(寫死)
+							shopid:asd2,//shopid(未完成)
+							pid:val12,//商品編號
+							products_deadline:time,//有效期限
+							record_time:nowtime,//現在日期
+						},
+						success:function(msg){
+							if (msg){
+								var a11 = document.getElementById("AA");
+								a11.innerHTML = "商品資訊";
+								var a211 = document.getElementById("code");
+								a211.innerHTML = "";
+								a111 = document.getElementById("BB");
+								a111.innerHTML = "保存期限";
+								$("h4").css("color","#333");
+								var qwe3 = document.getElementById('date')//鎖日期按鈕
+								qwe3.onclick = " ";
+								var qwe2 = document.getElementById('footer')//鎖OK按鈕
+								qwe2.onclick = " ";
+							}
+						},
+						error:function(msg){
+							alert(msg);
+						}
+					});
+			}
+			function scan() {
+				cordova.exec(success, failure, "ScanditSDK", "scan",
+                        ["SbzBskYLEeKHI+Xhn+itjEvveS7ByDfdxhPfQT5RBUY", 
+                        {"beep": true, 
+                         "1DScanning": true,
+                         "2DScanning": true,
+                         "scanningHotspot": "0.5/0.5",
+                         "vibrate": true}]);
+			}
+			
+			function datechange() {
+				
+			}
+			
+			function shop_select() {
+			
+			
+			
+			}
+			
+			$(document).ready(function(){
+				
+				var height =parseFloat($(window).height());
+				var width =parseFloat($(window).width());
+				
+				$('#header').height(height*0.1-15);
+				$('#footer').height(height*0.15-15);
+				//$('#home ul').padding-top(height*0.1-15);
+				$('.li').width(width*1);
+				$('.li').height(height*0.25+15);
+				//$('#ul').css("padding-top", height*0.08-15);
+				//$('.li').css("padding-top", height*0.1-15);
+				$('#shop').css("padding-top", height*0.05-15);
+				//$('#shop').width(width*1);
+				//$('#shop').margin(height*0.01-15);
+				//$('#product').height(height*0.25-15);
+				//$('#date').height(height*0.25-15);
+				$('.picture').height(height*0.2-15);
+				$('.picture').width(height*0.2-15);
+				$('.picture').css("padding-top", height*0.04-15);
+
+				//$('.picture').padding-top(height*0.01-15);
+				$('.title').css("fontSize", height*0.06-15);
+				$('h1').css("fontSize", height*0.03);
+				$('h1').css("padding-top", height*0.035);
+				$('h4').css("fontSize", height*0.08);
+				//$('h4').css("padding-bottom", height*0.035);
+				$('.title').css("padding-top", height*0.1-15);
+				//$('.title2').css("padding-top", 10);
+				$('.title2').css("fontSize", height*0.04-15);
+				$('.title').css("padding-left", width*0.1-15);
+				$('.title2').css("padding-left", width*0.1-15);
+				$('#deadline').mobiscroll(opt); //初始化mobiscroll控件
+				//$('#shopset').css("padding-left", width*0.1-15);
+				//$('#AA').css("padding-left", width*0.3-15);
+				//$('#BB').css("padding-left", width*0.3-15);
+				$('#GPS').css("margin-left", width*0.25);
+				$('#GPS').css("margin-top", height*0.3);
+				$('.GPS').width(width*0.5);
+				$('.GPS').css("fontSize", height*0.03);
+				$('.GPStitle').css("fontSize", height*0.04);
+				$('.GPStitle2').css("fontSize", height*0.02);
+				
+				function GPS(){
+				<!--成功-->
+				if(window.navigator.geolocation){
+					var geolocation=window.navigator.geolocation;
+						geolocation.getCurrentPosition(getPositionSuccess); <!--呼叫getPositionSuccess-->
+					}
+					<!--失敗-->
+				else{
+					alert('您的裝置不支持地理位置定位');
+				}
+				
+				function getPositionSuccess(position){
+					var val1=position.coords.latitude; <!--取得經度-->
+					var val2=position.coords.longitude; <!--取得緯度-->
+					//alert("您所在的位置: 經度"+val1+"，緯度"+val2);
+					var ajax_define_shop=function(val1, val2){
+						$.ajax({
+						type:"POST",
+						url:'http://140.135.112.35/sa/postSocket.php', //define shop URL
+						dataType:"json",
+						data:{
+							lat:val1,
+							lon:val2,
+						},
+						beforeSend:function(){
+							jQuery('#shop').showLoading();
+						},
+						success:function(msg){
+							var shopnum=msg.length;
+							var a1111,a1112,a1121,a1122,a1131,a1132,a1141,a1142;
+							document.getElementById("shop_id").value =msg[0].shop_id;
+							a1111=document.getElementById("shopset");
+							a1111.innerHTML=msg[0].shop_name;
+							a1112=document.getElementById("addressset");
+							a1112.innerHTML=msg[0].shop_address;
+							a1121=document.getElementById("shop1");
+							a1121.innerHTML=msg[1].shop_name;
+							a1122=document.getElementById("shop1_address");
+							a1122.innerHTML=msg[1].shop_address;
+							a1131=document.getElementById("shop2");
+							a1131.innerHTML=msg[2].shop_name;
+							a1132=document.getElementById("shop2_address");
+							a1132.innerHTML=msg[2].shop_address;
+							a1141=document.getElementById("shop3");
+							a1141.innerHTML=msg[3].shop_name;
+							a1142=document.getElementById("shop3_address");
+							a1142.innerHTML=msg[3].shop_address;
+							
+							$("#shop_choose1").click(function(){
+								var shopfinal,addressfinal;
+								shopfinal=document.getElementById("shopset");
+								shopfinal.innerHTML=msg[1].shop_name;
+								addressset=document.getElementById("addressset");
+								addressset.innerHTML=msg[1].shop_address;
+								document.getElementById("shop_id").value =msg[1].shop_id;
+								$('#GPS').popup('close');
+							
+							})
+				
+							$("#shop_choose2").click(function(){
+								var shopfinal,addressfinal;
+								shopfinal=document.getElementById("shopset");
+								shopfinal.innerHTML=msg[2].shop_name;
+								addressset=document.getElementById("addressset");
+								addressset.innerHTML=msg[2].shop_address;
+								document.getElementById("shop_id").value =msg[2].shop_id;
+								$('#GPS').popup('close');
+							})
+			
+							$("#shop_choose3").click(function(){
+								var shopfinal,addressfinal;
+								shopfinal=document.getElementById("shopset");
+								shopfinal.innerHTML=msg[3].shop_name;
+								addressset=document.getElementById("addressset");
+								addressset.innerHTML=msg[3].shop_address;
+								document.getElementById("shop_id").value =msg[3].shop_id;
+								$('#GPS').popup('close');
+							})
+										
+						},
+						complete:function(){
+							jQuery('#shop').hideLoading();
+						},
+						error: function(xhr, ajaxOptions, thrownError){
+							alert("failed");
+							alert(xhr.status);
+							alert(thrownError);
+						}
+						});
+					}
+					ajax_define_shop(val1,val2);
+				}		
+				}
+				
+				GPS();
+			
+				
+			})
+			
+		</script>
+</head>
+
+<body>
+
+
+<div data-role="page"   id="main" >
+  <div data-role="header"   data-position="fixed" id="header">
+    <h1>聯華食品巡點系統</h1>
+  </div>
+  <!--header結束-->
+  
+  <div data-role="content" >
+    <ul data-role="listview" id="ul">      
+	  <a href="#GPS" data-rel="popup" class="li">
+      <li id="shop" class="li" data-rel="popup">
+		<img src="img/shop.png" class="picture"/>
+            <p class="title" id="shopset">
+            店家資訊
+            </p>
+            <p class="title2" id="addressset">
+            </p>
+      </li>
+      </a>
+          <div data-role="popup" id="GPS" class="GPS">
+          	<ul data-role="listview" class="GPS">
+			
+            	<li data-role="divider" data-theme="a" class="GPStitle" style="text-align:center;">店家資訊</li>
+				
+                <li id=shop_choose1 >
+			    <p id="shop1" class="GPStitle2"></p>
+				<p id="shop1_address" class="GPStitle2"> </p>
+				</li>
+				<li id=shop_choose2 >
+			    <p id="shop2" class="GPStitle2"></p>
+				<p id="shop2_address" class="GPStitle2"> </p>
+				</li>
+				<li id=shop_choose3 >
+			    <p id="shop3" class="GPStitle2"></p>
+				<p id="shop3_address" class="GPStitle2"> </p>
+				</li>
+                 
+            </ul>
+          </div>
+      <a class="li">
+      <li id="product" class="li" onclick="scan()">
+      	<img src="img/product.png" class="picture"/>
+        <p class="title" id="AA" >商品資訊</p>
+        <p class="title2" id="code" ></p>
+      </li>
+      </a>
+      <a class="li">
+      <li id="date" class="li" >
+      	<img src="img/date.png" class="picture"/>
+        <p class="title" id="BB" >保存期限</p>
+      </li>
+      </a>
+    </ul>
+  </div>
+  <!--content結束-->
+  
+  <div data-role="footer" id="footer" data-position="fixed" onclick="">
+    <h4 id="OK">OK</h4>
+  </div>
+  <!--footer結束--> 
+  
+</div>
+<!--page結束-->
+
+
+<input type="hidden" id="shop_id" name="shop_id" />
+<input type="hidden" id="pid" name="pid" />
+<input type="text" id="deadline" name="deadline" style="display:none" onchange="a22()"/>
+<input type="hidden" id="nowdate" name="nowdate" />
+
+
+
+
+</body>
+</html>

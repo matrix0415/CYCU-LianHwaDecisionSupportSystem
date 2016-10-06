@@ -1,0 +1,159 @@
+@charset "utf-8";
+/* CSS Document */
+
+div#all{
+	width:1024px;
+	margin:0 auto;
+	}
+
+div#title{
+	width:1024px;
+	height:100px;
+	float:left;
+	}
+
+div#logo{
+	height:30px;
+	width:100px;
+	margin-left:200px;
+	margin-top:67px;
+	float:left;
+	}
+	
+img#logo{
+	height:30px;
+	width:100px;
+	}
+	
+div#new{
+	width:50px;
+	height:24px;
+	margin-right:10px;
+	margin-left:505px;
+	float:left;
+	margin-top:77px;
+	}
+	
+div#new1{
+	width:150px;
+	height:24px;
+	margin-right:10px;
+	margin-left:405px;
+	float:left;
+	margin-top:72px;
+	}	
+	
+.updage{
+	width:154px;
+	height:24px;
+	}	
+	
+img.new{
+	width:15px;
+	height:18px;
+	padding-left:10px;
+	float:right;
+	}
+		
+div.search{
+	width:154px;
+	height:24px;
+	float:left;
+	margin-top:65px;
+	}
+
+.search{
+	width:154px;
+	height:24px;
+	}
+	
+.day{
+	width:30px;
+	height:15px;
+	}
+	
+div.page1{
+	width:80px;
+	margin:auto 0;
+	}
+	
+.page1{
+	width:20px;
+	height:24px;
+	}	
+	
+div#table{
+	width:824px;
+	float:right;
+	}
+
+#tabletitleborder{
+	height:42px;
+	padding-top:2px;
+	border:solid;
+	border-right-style:none;
+	border-top-color:hsl(120, 33%, 70%);
+	border-top-width:1px;
+	border-left-style:none;
+	border-bottom-color:hsl(120, 33%, 70%);
+	border-bottom-width:2px;
+	}
+	
+#tabletitle{
+	height:40px;
+	width:824px;
+	background-color:hsl(120, 100%, 90%);
+	}
+	
+
+div#left{
+	width:200px;
+	float:left;
+	margin-top:48px;
+	}
+	
+div.menu{
+	width:200px;
+	height:20px;
+	float:left;
+	padding-bottom:40px;
+	}
+	
+div.picture{
+	width:20px;
+	height:20px;
+	float:left;
+	padding-right:20px;
+	}
+	
+img.picture{
+	width:20px;
+	height:20px;
+	}
+	
+div.link{
+	height:20px;
+	margin-top:3px;
+	float:left;
+	color:hsl(122,23%,58%);
+	font-size:15px;
+	}
+	
+div#link{
+	height:20px;
+	margin-top:3px;
+	float:left;
+	color:#000;
+	font-size:15px;
+	}
+		
+div#right{
+	width:624px;
+	float:right;
+	}
+	
+
+	
+div#article{
+	width:624px;
+	}

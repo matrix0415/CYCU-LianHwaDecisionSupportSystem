@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel=stylesheet type="text/css" href="View/css/menu.css">
+<link rel=stylesheet type="text/css" href="View/css/reset.css">
+<link rel=stylesheet type="text/css" href="View/css/chart.css">
+<link rel=stylesheet type="text/css" href="View/css/shop.css">
+<script type="text/javascript" src="View/js/jquery-1.8.3.min.js"></script>
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="View/css/jquery.fancybox.css?v=2.1.3" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox.pack.js?v=2.1.3"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="View/css/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="View/js/jquery.fancybox-media.js?v=1.0.5"></script>
+
+<link rel="stylesheet" href="View/css/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<link rel="stylesheet" href="View/css/showLoading1.css" type="text/css" media="screen" />
+<script type="text/javascript" src="View/js/jquery.showLoading.min.js"></script>
+<script type="text/javascript" src="View/js/jquery.showLoading.js"></script>
+
+<script type="text/javascript">			
+            
+			$(document).ready(function () {
+				
+				var val1 = document.getElementById("search");
+				var pagevalue = document.getElementById("page1");
+				
+				$.ajax({
+				   type:"POST",
+				   url:'http://140.135.112.35/sa/postSocket.php',
+				   dataType:"json",
+				   data:
+					{
+					   page:pagevalue.value,
+					   keyword:val1.value,
+					},
+					beforeSend:function(){
+						jQuery('#table1').showLoading();
+					},
+					success:function(msg){
+							for (var i = 0;i<20;i++){
+								var BB = "b"+i;
+								document.getElementById(BB).innerHTML = msg[i].products_name;
+								var CC = "c"+i;
+								var CC1 = document.getElementById(CC);
+								CC1.innerHTML = msg[i].products_age_date;
+								var DD = "d"+i;
+								var DD1 = document.getElementById(DD);
+								DD1.innerHTML = msg[i].products_age_avg+"天";
+							}
+					},
+					complete:function(){
+						jQuery('#table1').hideLoading();
+					},
+				});
+				
+				$('#search').keyup(function() {
+				
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.112.35/sa/postSocket.php',
+					   dataType:"json",
+					   data:
+						{
+							page:pagevalue.value,
+							keyword:val1.value,
+						},
+						success:function(msg1){
+								for (var i = 0;i<20;i++){
+								var BB = "b"+i;
+								document.getElementById(BB).innerHTML = msg1[i].products_name;
+								var CC = "c"+i;
+								var CC1 = document.getElementById(CC);
+								CC1.innerHTML = msg1[i].products_age_date;
+								var DD = "d"+i;
+								var DD1 = document.getElementById(DD);
+								DD1.innerHTML = msg1[i].products_age_avg+"天";
+								}
+						}
+					});
+				
+				});
+				
+				$('#updagelist').click(function() {
+					
+					rightnow = new Date();
+					var nowtime = rightnow.getFullYear()+"-"+(rightnow.getMonth()+1)+"-"+rightnow.getDate();
+					
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.112.35/sa/postSocket.php',
+					   dataType:"html",
+					   data:
+						{
+							sync:nowtime,
+						},
+						success:function(msg5){
+							alert("同步筆數："+msg5);
+							window.location.reload();//重新整理
+						}
+					});
+				
+				});
+				
+				$('#page1').keyup(function() {
+				
+					$.ajax({
+					   type:"POST",
+					   url:'http://140.135.112.35/sa/postSocket.php',
+					   dataType:"json",
+					   data:
+						{
+							page:pagevalue.value,
+							keyword:val1.value,
+						},
+						success:function(msg12){
+								if (msg12 == ""){
+									alert("查無此頁");
+								}
+								else
+									{
+									for (var i = 0;i<20;i++){
+									var BB = "b"+i;
+									document.getElementById(BB).innerHTML = msg12[i].products_name;
+									var CC = "c"+i;
+									var CC1 = document.getElementById(CC);
+									CC1.innerHTML = msg12[i].products_age_date;
+									var DD = "d"+i;
+									var DD1 = document.getElementById(DD);
+									DD1.innerHTML = msg12[i].products_age_avg+"天";
+									}
+								}
+						}
+					});
+				
+				});
+			})
+			
+			
+</script>
+<title>無標題文件</title>
+</head>
+
+<body>
+<div id="all">
+<div id="title">
+	<div id="logo">
+    	<img src="View/images/logo.png" id="logo"/>
+    </div>
+	<div id="new1"><button id="updagelist" class="updage">同步貨齡清單</button></div>
+    <div class="search"><input type="text" class="search" id="search" value=""/></div>
+</div>
+<div id="table">
+	<div id="tabletitleborder"><div id="tabletitle" ><div id="producttitle">商品</div><div class="brandtitle">DATE</div><div class="brandtitle">平均貨齡</div></div></div>
+<div id="table1">
+	<div class="list" value="" id="a0">
+	  <div class="product" id="b0"></div>
+	  <div class="brand" id="c0"></div>
+	  <div class="avgage" id="d0"></div>
+    </div>
+	<div class="list" value="" id="a1">
+	  <div class="product" id="b1"></div>
+	  <div class="brand" id="c1"></div>
+	  <div class="avgage" id="d1"></div>
+    </div>
+	<div class="list" value="" id="a2">
+	  <div class="product" id="b2"></div>
+	  <div class="brand" id="c2"></div>
+	  <div class="avgage" id="d2"></div>
+    </div>
+	<div class="list" value="" id="a3">
+	  <div class="product" id="b3"></div>
+	  <div class="brand" id="c3"></div>
+	  <div class="avgage" id="d3"></div>
+    </div>
+	<div class="list" value="" id="a4">
+	  <div class="product" id="b4"></div>
+	  <div class="brand" id="c4"></div>
+	  <div class="avgage" id="d4"></div>
+    </div>
+	<div class="list" value="" id="a5">
+	  <div class="product" id="b5"></div>
+	  <div class="brand" id="c5"></div>
+	  <div class="avgage" id="d5"></div>
+    </div>
+	<div class="list" value="" id="a6">
+	  <div class="product" id="b6"></div>
+	  <div class="brand" id="c6"></div>
+	  <div class="avgage" id="d6"></div>
+    </div>
+	<div class="list" value="" id="a7">
+	  <div class="product" id="b7"></div>
+	  <div class="brand" id="c7"></div>
+	  <div class="avgage" id="d7"></div>
+    </div>
+	<div class="list" value="" id="a8">
+	  <div class="product" id="b8"></div>
+	  <div class="brand" id="c8"></div>
+	  <div class="avgage" id="d8"></div>
+    </div>
+	<div class="list" value="" id="a9">
+	  <div class="product" id="b9"></div>
+	  <div class="brand" id="c9"></div>
+	  <div class="avgage" id="d9"></div>
+    </div>
+	<div class="list" value="" id="a10">
+	  <div class="product" id="b10"></div>
+	  <div class="brand" id="c10"></div>
+	  <div class="avgage" id="d10"></div>
+    </div>
+	<div class="list" value="" id="a11">
+	  <div class="product" id="b11"></div>
+	  <div class="brand" id="c11"></div>
+	  <div class="avgage" id="d11"></div>
+    </div>
+	<div class="list" value="" id="a12">
+	  <div class="product" id="b12"></div>
+	  <div class="brand" id="c12"></div>
+	  <div class="avgage" id="d12"></div>
+    </div>
+	<div class="list" value="" id="a13">
+	  <div class="product" id="b13"></div>
+	  <div class="brand" id="c13"></div>
+	  <div class="avgage" id="d13"></div>
+    </div>
+	<div class="list" value="" id="a14">
+	  <div class="product" id="b14"></div>
+	  <div class="brand" id="c14"></div>
+	  <div class="avgage" id="d14"></div>
+    </div>
+	<div class="list" value="" id="a15">
+	  <div class="product" id="b15"></div>
+	  <div class="brand" id="c15"></div>
+	  <div class="avgage" id="d15"></div>
+    </div>
+	<div class="list" value="" id="a16">
+	  <div class="product" id="b16"></div>
+	  <div class="brand" id="c16"></div>
+	  <div class="avgage" id="d16"></div>
+    </div>
+	<div class="list" value="" id="a17">
+	  <div class="product" id="b17"></div>
+	  <div class="brand" id="c17"></div>
+	  <div class="avgage" id="d17"></div>
+    </div>
+	<div class="list" value="" id="a18">
+	  <div class="product" id="b18"></div>
+	  <div class="brand" id="c18"></div>
+	  <div class="avgage" id="d18"></div>
+    </div>
+	<div class="list" value="" id="a19">
+	  <div class="product" id="b19"></div>
+	  <div class="brand" id="c19"></div>
+	  <div class="avgage" id="d19"></div>
+    </div>
+</div>  
+<center> 
+<div class="page1">第 <input type="text" class="page1" id="page1" value="1"/> 頁</div>
+</center>
+</div>
+<div id="left">
+	<div class="menu">
+    	<a href="date.html"><div class="picture"><img src="View/images/time.png" class="picture"/></div><div class="link">貨齡分析</div></a>
+    </div>
+    <div class="menu">
+        <a href="shop.html"><div class="picture"><img src="View/images/chnnal.png" class="picture"/></div><div class="link">店家清單</div></a>
+    </div>
+    <div class="menu">
+        <a href="product.html"><div class="picture"><img src="View/images/product.png" class="picture"/></div><div class="link">商品清單</div></a>
+    </div>
+    <div class="menu">
+        <div class="picture"><img src="View/images/city.png" class="picture"/></div><div id="link">貨齡清單</div>
+    </div>
+                <div class="menu">
+                    <a href="http://140.135.113.33:8080/member.jsp">
+                        <div class="picture">
+                            <img src="View/images/city.png" class="picture" />
+                        </div>
+                        <div class="link">人員管理</div>
+                    </a>
+                </div>
+</div>
+
+</div>
+
+</body>
+</html>
